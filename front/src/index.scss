@@ -62,3 +62,17 @@ button {
     }
   }
 }
+
+input {
+  padding: 0.5em 1em;
+  border: 0.1em solid #eee;
+}
+
+form {
+  display: flex;
+  flex-flow: column;
+}
+
+label {
+  padding-bottom: 1em;
+}
