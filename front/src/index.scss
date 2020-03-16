@@ -1,0 +1,50 @@
+@import '../node_modules/normalize.css/normalize.css';
+
+body {
+  font-family: sans-serif;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+button {
+  padding: 0.5em 1em;
+  background: #eee;
+  border: 0.1em solid #eee;
+  &:not(:disabled) {
+    cursor: pointer;
+    &:hover {
+      background: #ddd;
+      border-color: #ddd;
+    }
+    &:active {
+      background: #ccc;
+      border-color: #ccc;
+    }
+
+    &.primary {
+      background: #333;
+      border-color: #333;
+      color: white;
+      &:hover {
+        background: #444;
+        border-color: #444;
+      }
+      &:active {
+        background: #555;
+        border-color: #555;
+      }
+    }
+  }
+}

@@ -1,10 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import Header from './layout/Header/Header';
+import Footer from './layout/Footer/Footer';
+import Main from './layout/Main/Main';
 
 export default () => (
   <div className="App">
-    <div>Hello world!</div>
-    <img src={logo} alt="Hello Logo" />
+    <Header />
+    <Main />
+    <Footer />
   </div>
 );
