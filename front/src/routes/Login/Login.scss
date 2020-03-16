@@ -1,0 +1,32 @@
+.Login {
+    section {
+        display: flex;
+        flex-flow: column;
+        align-items: stretch;
+    }
+    .or {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        background: transparent;
+        &::before {
+            position: absolute;
+            z-index: -2;
+            top: 50%;
+            left: 0;
+            content: " ";
+            border: 0.1em solid #aaa;
+            height: 0;
+            width: 100%;
+        }
+        &::after {
+            position: relative;
+            z-index: -1;
+            content: "or";
+            display: flex;
+            background: white;
+            padding: 0.5em;
+            color: #aaa;
+        }
+    }
+}

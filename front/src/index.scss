@@ -1,5 +1,11 @@
 @import '../node_modules/normalize.css/normalize.css';
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   font-family: sans-serif;
 }
@@ -11,6 +17,7 @@ main {
   flex-flow: column;
   width: 100%;
   max-width: 40em;
+  padding: 0.5em;
 }
 
 h1 {

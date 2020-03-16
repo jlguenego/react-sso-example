@@ -1,6 +1,6 @@
 import React from 'react';
 import './Home.scss';
-import Connection from '../../layout/Connection/Connection';
+import Connection from '../../widgets/Connection/Connection';
 
 export default (props: any) => (
   <main className="Home">

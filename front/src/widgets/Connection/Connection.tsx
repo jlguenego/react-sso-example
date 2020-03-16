@@ -1,8 +1,11 @@
 import React from 'react';
 import './Connection.scss';
+import { Link } from 'react-router-dom';
 
 export default () => (
   <section className="Connection">
-    <button>Connect</button>
+    <Link to="/login">
+      <button>Connect</button>
+    </Link>
   </section>
 );
