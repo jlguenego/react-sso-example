@@ -8,6 +8,9 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-flow: column;
+  width: 100%;
+  max-width: 40em;
 }
 
 a {
