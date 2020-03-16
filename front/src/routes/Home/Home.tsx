@@ -1,9 +1,11 @@
 import React from 'react';
 import './Home.scss';
+import Connection from '../../layout/Connection/Connection';
 
-export default () => (
+export default (props: any) => (
   <main className="Home">
     <h1>Welcome !</h1>
     <button className="primary">Look at my secret...</button>
+    <Connection />
   </main>
 );
