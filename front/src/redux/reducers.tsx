@@ -1,17 +1,12 @@
-import { createStore } from 'redux';
-import { User, CONNECT_WITH_SSO, AppAction } from './types';
+import { CONNECT_WITH_SSO, AppAction, AppState } from './types';
 
-export interface AppState {
-    user: User | undefined;
-    secret: string;
-  }
 
-const initialState: AppState = {
-  user: undefined,
+
+export const initialState: AppState = {
   secret: '',
 };
 
-function reducer(previousState = initialState, action: AppAction): AppState {
+export function reducer(previousState = initialState, action: AppAction): AppState {
   switch (action.type) {
     case CONNECT_WITH_SSO:
       const state = { ...previousState };
@@ -24,7 +19,4 @@ function reducer(previousState = initialState, action: AppAction): AppState {
   }
 }
 
-export const store = createStore<AppState, AppAction, void, void>(
-  reducer,
-  initialState
-);
+

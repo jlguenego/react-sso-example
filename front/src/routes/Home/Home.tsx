@@ -3,8 +3,9 @@ import './Home.scss';
 import Connection from '../../widgets/Connection/Connection';
 
 export default class Home extends Component<{}, { secret: string }> {
-  constructor({}) {
-    super({});
+  constructor(props: {}) {
+    super(props);
+    console.log('props: ', props);
     this.state = { secret: '' };
   }
 
@@ -17,7 +18,6 @@ export default class Home extends Component<{}, { secret: string }> {
   render() {
     return (
       <main className="Home">
-        <h1>Welcome !</h1>
         <Connection />
         <button className="primary secret-btn" onClick={this.showSecret.bind(this)}>
           Look at my secret...

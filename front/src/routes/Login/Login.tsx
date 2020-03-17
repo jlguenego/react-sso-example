@@ -1,8 +1,8 @@
 import React from 'react';
 import './Login.scss';
 import { useHistory } from 'react-router-dom';
-import { store } from '../../redux/reducers';
 import { CONNECT_WITH_SSO } from '../../redux/types';
+import { store } from '../../redux/store';
 
 export default () => {
   let history = useHistory();

@@ -24,3 +24,7 @@ interface ConnectWithCredentialsAction {
 
 export type AppAction = ConnectWithSSOAction | ConnectWithCredentialsAction;
 
+export interface AppState {
+  user?: User;
+  secret: string;
+}

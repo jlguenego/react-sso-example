@@ -3,5 +3,13 @@
   flex-flow: column;
   align-items: stretch;
   justify-content: center;
-  padding-top: 1em;
+  padding-bottom: 0.5em;
+
+  button {
+    margin-top: 0.5em;
+  }
+
+  h1 {
+    text-align: center;
+  }
 }
