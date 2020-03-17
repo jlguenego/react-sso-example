@@ -50,7 +50,6 @@ export default connect(
       });
       history.push('/');
     } catch (e) {
-      console.error('error', e);
       store.dispatch({
         type: CONNECT_WITH_BAD_CREDENTIALS,
       });
