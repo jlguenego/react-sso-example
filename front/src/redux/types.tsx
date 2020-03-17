@@ -22,7 +22,12 @@ interface ConnectWithCredentialsAction {
   password: string;
 }
 
-export type AppAction = ConnectWithSSOAction | ConnectWithCredentialsAction;
+interface ShowSecretAction {
+  type: typeof SHOW_SECRET;
+  secret: string;
+}
+
+export type AppAction = ConnectWithSSOAction | ConnectWithCredentialsAction | ShowSecretAction;
 
 export interface UserState {
   user?: User;

@@ -1,30 +1,48 @@
-import React, { Component } from 'react';
-import './Home.scss';
+import React from 'react';
+import { SecretState, SHOW_SECRET } from '../../redux/types';
 import Connection from '../../widgets/Connection/Connection';
+import './Home.scss';
+import { Dispatch } from 'redux';
+import { store } from '../../redux/store';
+import { connect } from 'react-redux';
 
-export default class Home extends Component<{}, { secret: string }> {
-  constructor(props: {}) {
-    super(props);
-    console.log('props: ', props);
-    this.state = { secret: '' };
-  }
+const mapStateToProps = (state: SecretState) => ({
+  secret: state.secret,
+});
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  showSecret: async () => {
+    try {
+      const state = store.getState();
+      if (!state.user) {
+        throw new Error('not connected');
+      }
+      const response = await window.fetch('/ws/protected/secret');
+      const json = await response.json();
+      console.log('json: ', json);
+      store.dispatch({
+        type: SHOW_SECRET,
+        secret: JSON.stringify(json),
+      });
+    } catch (e) {
+      alert('You need to be connected to know the secret.');
+    }
+  },
+});
 
-  showSecret() {
-    this.setState({
-      secret: 'hello this is my secret'
-    });
-  }
-
-  render() {
-    return (
-      <main className="Home">
-        <Connection />
-        <button className="primary secret-btn" onClick={this.showSecret.bind(this)}>
-          Look at my secret...
-        </button>
-        {/* /\u00A0 means non breaking space in Unicode */}
-        <span className="secret">{this.state.secret ? this.state.secret : '\u00A0'}</span>
-      </main>
-    );
-  }
+interface HomeProps extends SecretState {
+  showSecret: () => void;
 }
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(({ secret, showSecret }: HomeProps) => (
+  <main className="Home">
+    <Connection />
+    <button className="primary secret-btn" onClick={showSecret}>
+      Look at my secret...
+    </button>
+    {/* /\u00A0 means non breaking space in Unicode */}
+    <span className="secret">{secret ? secret : '\u00A0'}</span>
+  </main>
+));
