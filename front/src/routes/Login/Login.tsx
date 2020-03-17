@@ -1,6 +1,8 @@
 import React from 'react';
 import './Login.scss';
 import { useHistory } from 'react-router-dom';
+import { store } from '../../redux/reducers';
+import { CONNECT_WITH_SSO } from '../../redux/types';
 
 export default () => {
   let history = useHistory();
@@ -10,6 +12,10 @@ export default () => {
     const response = await window.fetch('/ws/connect-with-sso');
     const json = await response.json();
     console.log('json: ', json);
+    store.dispatch({
+      type: CONNECT_WITH_SSO,
+      user: json.sso.user
+    });
     history.push('/');
   }
 
