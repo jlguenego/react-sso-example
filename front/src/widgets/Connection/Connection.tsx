@@ -2,19 +2,18 @@ import React from 'react';
 import './Connection.scss';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { AppState } from '../../redux/types';
+import { UserState } from '../../redux/types';
 import { Dispatch } from 'redux';
 
-const mapStateToProps = (state: AppState) => ({
+const mapStateToProps = (state: UserState) => ({
   user: state.user,
-  secret: '',
 });
 const mapDispatchToProps = (dispatch: Dispatch) => ({});
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)((props: AppState) => {
+)((props: UserState) => {
   console.log('props: ', props);
   return (
     <section className="Connection">
