@@ -18,7 +18,6 @@ async function init() {
   } catch (e) {
     ;
   }
-
 }
 init();
 
