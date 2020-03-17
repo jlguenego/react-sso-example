@@ -76,7 +76,7 @@ app.get('/ws/is-connected', (req, res, next) => {
   return res.status(401).end();
 });
 
-const www = '../front/dist/front';
+const www = '../front/build';
 app.use(express.static(www));
 app.use(serveIndex(www, { icons: true }));
 
