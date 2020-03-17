@@ -7,7 +7,7 @@ import {
   ErrorState,
 } from '../../redux/types';
 import { store } from '../../redux/store';
-import { post } from '../../utils/http';
+import { post, get } from '../../utils/http';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
@@ -26,8 +26,7 @@ export default connect(
 
   async function connectWithSSO() {
     console.log('connectWithSSO');
-    const response = await window.fetch('/ws/connect-with-sso');
-    const json = await response.json();
+    const json = await get('/ws/connect-with-sso');
     console.log('json: ', json);
     store.dispatch({
       type: CONNECT_WITH_SSO,

@@ -5,6 +5,7 @@ import './Home.scss';
 import { Dispatch } from 'redux';
 import { store } from '../../redux/store';
 import { connect } from 'react-redux';
+import { get } from '../../utils/http';
 
 const mapStateToProps = (state: SecretState) => ({
   secret: state.secret,
@@ -16,8 +17,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
       if (!state.user) {
         throw new Error('not connected');
       }
-      const response = await window.fetch('/ws/protected/secret');
-      const json = await response.json();
+      const json = await get('/ws/protected/secret');
       console.log('json: ', json);
       store.dispatch({
         type: SHOW_SECRET,

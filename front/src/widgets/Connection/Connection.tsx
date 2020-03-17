@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { UserState, ConnectDispatch, DISCONNECT } from '../../redux/types';
 import { Dispatch } from 'redux';
 import { store } from '../../redux/store';
+import { get } from '../../utils/http';
 
 const mapStateToProps = (state: UserState) => ({
   user: state.user,
@@ -12,7 +13,7 @@ const mapStateToProps = (state: UserState) => ({
 const mapDispatchToProps = (dispatch: Dispatch): ConnectDispatch => ({
   disconnect: async () => {
     console.log('disconnect');
-    await fetch('/ws/disconnect');
+    await get('/ws/disconnect');
     store.dispatch({
       type: DISCONNECT
     });
