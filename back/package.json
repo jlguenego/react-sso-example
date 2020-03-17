@@ -1,0 +1,24 @@
+{
+  "name": "back",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/express": "^4.17.2",
+    "@types/express-session": "^1.15.16",
+    "@types/serve-index": "^1.7.30",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "node-expose-sspi": "0.0.14",
+    "nodemon": "^2.0.2",
+    "serve-index": "^1.9.1",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.7.5"
+  }
+}
