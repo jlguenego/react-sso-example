@@ -1,4 +1,4 @@
-import { CONNECT_WITH_SSO, AppAction, AppState, SHOW_SECRET } from './types';
+import { CONNECT_WITH_SSO, AppAction, AppState, SHOW_SECRET, DISCONNECT } from './types';
 
 export const initialState: AppState = {
   secret: '',
@@ -20,6 +20,12 @@ export function reducer(
       state.secret = action.secret;
       console.log('set secret', state);
 
+      return state;
+    }
+    case DISCONNECT: {
+      const state = { ...previousState };
+      state.secret = '';
+      state.user = undefined;
       return state;
     }
 

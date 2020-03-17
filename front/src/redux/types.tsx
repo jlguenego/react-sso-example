@@ -27,7 +27,15 @@ interface ShowSecretAction {
   secret: string;
 }
 
-export type AppAction = ConnectWithSSOAction | ConnectWithCredentialsAction | ShowSecretAction;
+interface DisconnectAction {
+  type: typeof DISCONNECT;
+}
+
+export type AppAction =
+  | ConnectWithSSOAction
+  | ConnectWithCredentialsAction
+  | ShowSecretAction
+  | DisconnectAction;
 
 export interface UserState {
   user?: User;
@@ -37,4 +45,8 @@ export interface SecretState {
   secret: string;
 }
 
-export interface AppState extends UserState, SecretState {};
+export interface AppState extends UserState, SecretState {}
+
+export interface ConnectDispatch {
+  disconnect: () => void;
+}
