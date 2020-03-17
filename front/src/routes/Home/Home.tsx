@@ -5,7 +5,7 @@ import Connection from '../../widgets/Connection/Connection';
 export default class Home extends Component<{}, { secret: string }> {
   constructor(props: {}) {
     super(props);
-    this.state = { secret: 'xxx' };
+    this.state = { secret: '' };
   }
 
   showSecret() {
@@ -19,10 +19,11 @@ export default class Home extends Component<{}, { secret: string }> {
       <main className="Home">
         <h1>Welcome !</h1>
         <Connection />
-        <button className="primary secret" onClick={this.showSecret.bind(this)}>
+        <button className="primary secret-btn" onClick={this.showSecret.bind(this)}>
           Look at my secret...
         </button>
-        <span>{this.state.secret}</span>
+        {/* /\u00A0 means non breaking space in Unicode */}
+        <span className="secret">{this.state.secret ? this.state.secret : '\u00A0'}</span>
       </main>
     );
   }
