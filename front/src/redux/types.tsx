@@ -1,4 +1,4 @@
-export const CONNECT_WITH_CREDENTIALS = 'connect-with-credentials';
+export const CONNECT_WITH_BAD_CREDENTIALS = 'connect-with-bad-credentials';
 export const CONNECT_WITH_SSO = 'connect-with-sso';
 export const DISCONNECT = 'disconnect';
 export const SHOW_SECRET = 'show-secret';
@@ -17,9 +17,7 @@ interface ConnectWithSSOAction {
 }
 
 interface ConnectWithCredentialsAction {
-  type: typeof CONNECT_WITH_CREDENTIALS;
-  login: string;
-  password: string;
+  type: typeof CONNECT_WITH_BAD_CREDENTIALS;
 }
 
 interface ShowSecretAction {
@@ -45,7 +43,11 @@ export interface SecretState {
   secret: string;
 }
 
-export interface AppState extends UserState, SecretState {}
+export interface ErrorState {
+  error: boolean;
+}
+
+export interface AppState extends UserState, SecretState, ErrorState {}
 
 export interface ConnectDispatch {
   disconnect: () => void;
