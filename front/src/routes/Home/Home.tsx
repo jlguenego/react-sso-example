@@ -3,8 +3,8 @@ import './Home.scss';
 import Connection from '../../widgets/Connection/Connection';
 
 export default class Home extends Component<{}, { secret: string }> {
-  constructor(props: {}) {
-    super(props);
+  constructor({}) {
+    super({});
     this.state = { secret: '' };
   }
 
