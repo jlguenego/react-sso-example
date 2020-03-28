@@ -9,6 +9,7 @@ export interface User {
   displayName: string;
   groups: string[];
   sid: string;
+  adUser?: any;
 }
 
 interface ConnectWithSSOAction {

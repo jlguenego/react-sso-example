@@ -15,7 +15,7 @@ const mapDispatchToProps = (dispatch: Dispatch): ConnectDispatch => ({
     console.log('disconnect');
     await get('/ws/disconnect');
     store.dispatch({
-      type: DISCONNECT
+      type: DISCONNECT,
     });
   },
 });
@@ -32,13 +32,18 @@ export default connect(
         <>
           <h1>
             Welcome <br />
-            {user?.displayName} !
+            {user?.adUser ? (
+              <span>{user?.adUser.givenName} (AD)</span>
+            ) : (
+              <span>{user?.displayName}</span>
+            )}{' '}
+            !
           </h1>
           <button onClick={disconnect}>Disconnect</button>
         </>
       ) : (
         <>
-          <h1>Welcome !</h1>
+          <h1>Welcome anonymous !</h1>
           <Link to="/login">
             <button>Connect</button>
           </Link>

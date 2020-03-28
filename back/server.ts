@@ -1,7 +1,7 @@
 import express = require('express');
 import serveIndex = require('serve-index');
 import session = require('express-session');
-import { sso, sspi } from 'node-expose-sspi';
+import { sso, UserCredential } from 'node-expose-sspi';
 
 const app = express();
 
@@ -26,11 +26,11 @@ app.use('/ws/protected', (req, res, next) => {
   next();
 });
 
-app.use('/ws/protected/secret', (req, res, next) => {
+app.use('/ws/protected/secret', (req, res) => {
   res.json({ hello: 'word!' });
 });
 
-app.get('/ws/connect-with-sso', sso.auth(), (req, res, next) => {
+app.get('/ws/connect-with-sso', sso.auth(), (req, res) => {
   console.log(req.sso);
   if (!req.sso) {
     return res.status(401).end();
@@ -41,18 +41,18 @@ app.get('/ws/connect-with-sso', sso.auth(), (req, res, next) => {
   });
 });
 
-app.post('/ws/connect', (req, res, next) => {
+app.post('/ws/connect', async (req, res) => {
   console.log('connect', req.body);
   const domain = sso.getDefaultDomain();
   console.log('domain: ', domain);
 
-  const credentials: sspi.UserCredential = {
+  const credentials: UserCredential = {
     domain,
     user: req.body.login,
     password: req.body.password,
   };
   console.log('credentials: ', credentials);
-  const ssoObject = sso.connect(credentials);
+  const ssoObject = await sso.connect(credentials);
   if (ssoObject) {
     req.session.sso = ssoObject;
     return res.json({
@@ -64,12 +64,12 @@ app.post('/ws/connect', (req, res, next) => {
   });
 });
 
-app.get('/ws/disconnect', (req, res, next) => {
+app.get('/ws/disconnect', (req, res) => {
   delete req.session.sso;
   return res.json({});
 });
 
-app.get('/ws/is-connected', (req, res, next) => {
+app.get('/ws/is-connected', (req, res) => {
   if (req.session.sso) {
     return res.json({ sso: req.session.sso });
   }
